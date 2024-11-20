@@ -181,3 +181,23 @@ exports.deleteActorById = async (req, res, next) => {
         next(error)
     }
 }
+
+exports.deleteAll = async (req, res, next) => {
+    try {
+        const result = await Actor.deleteMany({})
+        if (result.deletedCount === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No actors found to delete"
+            })
+        }
+        return res.status(200).json({
+            success: true,
+            message: "All actors deleted successfully",
+            result
+        })
+
+    } catch (error) {
+        next(error)
+    }
+}

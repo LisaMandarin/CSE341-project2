@@ -7,5 +7,6 @@ actorRoute.post('/search', actorController.findByQuery)
 actorRoute.post('/', actorController.createActor)
 actorRoute.patch('/:id', actorController.updateActorById)
 actorRoute.delete('/:id', actorController.deleteActorById)
+actorRoute.delete('/', actorController.deleteAll)
 
 module.exports = actorRoute

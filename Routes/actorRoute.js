@@ -4,5 +4,6 @@ const actorController = require("../controllers/actorController")
 actorRoute.get('/', actorController.findAll)
 actorRoute.get('/:id', actorController.findById)
 actorRoute.post('/search', actorController.findByQuery)
+actorRoute.post('/', actorController.createActor)
 
 module.exports = actorRoute

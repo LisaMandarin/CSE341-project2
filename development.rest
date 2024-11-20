@@ -2,7 +2,7 @@
 GET http://localhost:3000/actors
 
 ###
-GET http://localhost:3000/actors/673deaae4ff5598dcadd69be
+GET http://localhost:3000/actors/673e22bc1907ab65af95ec30
 
 ###
 POST  http://localhost:3000/actors/search
@@ -26,4 +26,17 @@ Content-Type: application/json
 
 {
     "gender": "female"
+}
+
+###
+POST http://localhost:3000/actors
+Content-Type: application/json
+
+{
+    "firstName": "Chyler",
+    "lastName": "Leigh",
+    "gender": "female",
+    "character": "Lexie Grey",
+    "firstAppear": 3,
+    "seasons": [3,4,5,6,7,8,17]
 }

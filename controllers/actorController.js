@@ -80,3 +80,43 @@ exports.findByQuery = async (req, res, next) => {
         next(error)
     }
 }
+
+exports.createActor = async (req, res, next) => {
+    try {
+        const {
+            firstName,
+            lastName,
+            gender,
+            character,
+            dateOfBirth,
+            nationality,
+            firstAppear,
+            seasons
+        } = req.body
+        if (!firstName || !lastName || !gender || !character || !firstAppear || !seasons) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid parameters: firstName, lastName, gender, character, firstAppear and seasons fields are required"
+            })
+        }
+        
+        const newActor = new Actor({
+            firstName,
+            lastName,
+            gender,
+            character,
+            dateOfBirth,
+            nationality,
+            firstAppear,
+            seasons
+        })
+        const result = await newActor.save();
+        return res.status(201).json({
+            success: true,
+            data: result
+        })
+        
+    } catch (error) {
+        next(error)
+    }
+}

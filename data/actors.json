@@ -1,52 +1,52 @@
 [
-    {
+  {
       "firstName": "Ellen",
       "lastName": "Pompeo",
-      "gender": "Female",
+      "gender": "female",
       "character": "Meredith Grey",
       "dateOfBirth": "1969-11-10",
       "nationality": "American",
-      "firstAppear": "2005-03-27",
+      "firstAppearSeason": 1,
       "seasons": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-    },
-    {
+  },
+  {
       "firstName": "Patrick",
       "lastName": "Dempsey",
-      "gender": "Male",
+      "gender": "male",
       "character": "Derek Shepherd",
       "dateOfBirth": "1966-01-13",
       "nationality": "American",
-      "firstAppear": "2005-03-27",
+      "firstAppearSeason": 1,
       "seasons": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    },
-    {
+  },
+  {
       "firstName": "Sandra",
       "lastName": "Oh",
-      "gender": "Female",
+      "gender": "female",
       "character": "Cristina Yang",
       "dateOfBirth": "1971-07-20",
       "nationality": "Canadian",
-      "firstAppear": "2005-03-27",
+      "firstAppearSeason": 1,
       "seasons": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    },
-    {
+  },
+  {
       "firstName": "Justin",
       "lastName": "Chambers",
-      "gender": "Male",
+      "gender": "male",
       "character": "Alex Karev",
       "dateOfBirth": "1970-07-11",
       "nationality": "American",
-      "firstAppear": "2005-03-27",
+      "firstAppearSeason": 1,
       "seasons": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-    },
-    {
+  },
+  {
       "firstName": "Chandra",
       "lastName": "Wilson",
-      "gender": "Female",
+      "gender": "female",
       "character": "Miranda Bailey",
       "dateOfBirth": "1969-08-27",
       "nationality": "American",
-      "firstAppear": "2005-03-27",
+      "firstAppearSeason": 1,
       "seasons": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-    }
+  }
 ]

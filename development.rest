@@ -2,14 +2,14 @@
 GET http://localhost:3000/actors
 
 ###
-GET http://localhost:3000/actors/673e22bc1907ab65af95ec30
+GET http://localhost:3000/actors/673e45a6c21e70e4e7988971
 
 ###
 POST  http://localhost:3000/actors/search
 Content-Type: application/json
 
 {
-    "seasons": [1]
+    "seasons": [17]
 }
 
 ###
@@ -42,7 +42,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://localhost:3000/actors/673e22bc1907ab65af95ec30
+PATCH  http://localhost:3000/actors/673e462c57d9c6b18bfd5854
 Content-Type: application/json
 
 {
@@ -50,7 +50,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/actors/673e22bc1907ab65af95ec30
+DELETE http://localhost:3000/actors/673e462c57d9c6b18bfd5854
 
 ###
 DELETE http://localhost:3000/actors

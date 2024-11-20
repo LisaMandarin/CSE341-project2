@@ -4,14 +4,13 @@ require("dotenv").config()
 const app = express()
 const port = process.env.PORT
 const mongodbURI = process.env.MONGODB_URI
+const errorHandling = require("./utils/errorHandling")
 
 if (!port) {
-    console.error("Port is not defined in the env file")
-    process.exit(1)
+    throw new Error("Port is not defined in the env file")
 }
 if (!mongodbURI) {
-    console.error("Invalid MongoDB URI")
-    process.exit(1)
+    throw new Error("Invalid MongoDB URI")
 }
 mongoose
     .connect(mongodbURI)
@@ -25,4 +24,5 @@ app.get("/", (req, res) => {
     res.send("Hello")
 })
 
+app.use(errorHandling)
 app.listen(port, () => console.log(`Server application listening on port ${port}`))

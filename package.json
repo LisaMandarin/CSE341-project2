@@ -4,7 +4,9 @@
   "description": "School Project for W3-W4 of CSE341 BYUI",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/LisaMandarin/CSE341-project2/issues"
   },
-  "homepage": "https://github.com/LisaMandarin/CSE341-project2#readme"
+  "homepage": "https://github.com/LisaMandarin/CSE341-project2#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
 }

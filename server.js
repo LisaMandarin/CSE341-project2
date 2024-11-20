@@ -5,6 +5,8 @@ const app = express()
 const port = process.env.PORT
 const mongodbURI = process.env.MONGODB_URI
 const errorHandling = require("./utils/errorHandling")
+const connectDB = require("./models/index")
+const router = require("./Routes")
 
 if (!port) {
     throw new Error("Port is not defined in the env file")
@@ -12,17 +14,16 @@ if (!port) {
 if (!mongodbURI) {
     throw new Error("Invalid MongoDB URI")
 }
-mongoose
-    .connect(mongodbURI)
-    .then(() => console.log("Connected to MongoDB successfully"))
-    .catch(error => {
-        console.error("Failed to connect to MongoDB.  Exiting...", error.message)
-        process.exit(1)
-    })
 
-app.get("/", (req, res) => {
-    res.send("Hello")
-})
+connectDB(mongodbURI)
 
+// app.get("/", (req, res) => {
+//     res.send("Hello")
+// })
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(router)
 app.use(errorHandling)
+
 app.listen(port, () => console.log(`Server application listening on port ${port}`))

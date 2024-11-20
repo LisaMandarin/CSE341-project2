@@ -3,3 +3,27 @@ GET http://localhost:3000/actors
 
 ###
 GET http://localhost:3000/actors/673deaae4ff5598dcadd69be
+
+###
+POST  http://localhost:3000/actors/search
+Content-Type: application/json
+
+{
+    "seasons": [1]
+}
+
+###
+POST http://localhost:3000/actors/search
+Content-Type: application/json
+
+{
+    "character": "Shepherd"
+}
+
+###
+POST http://localhost:3000/actors/search
+Content-Type: application/json
+
+{
+    "gender": "female"
+}

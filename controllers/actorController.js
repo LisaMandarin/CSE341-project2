@@ -120,3 +120,33 @@ exports.createActor = async (req, res, next) => {
         next(error)
     }
 }
+
+exports.updateActorById = async (req, res, next) => {
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid ID format"
+            })
+        }
+        const id = new ObjectId(req.params.id)
+
+        delete req.body._id  // Sanitize the req.body
+
+        const result = await Actor.updateOne({ _id: id }, req.body)
+        if (result.matchedCount === 0) {
+            return res.status(404).json({
+                success: false,
+                message: `Actor with ${req.params.id} not found`
+            })
+        }
+        return res.status(200).json({
+            success: true,
+            data: result,
+            message: `Actor with ID ${req.params.id} updated successfully`
+        })
+
+    } catch (error) {
+        next(error)
+    }
+}

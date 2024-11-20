@@ -5,5 +5,6 @@ actorRoute.get('/', actorController.findAll)
 actorRoute.get('/:id', actorController.findById)
 actorRoute.post('/search', actorController.findByQuery)
 actorRoute.post('/', actorController.createActor)
+actorRoute.patch('/:id', actorController.updateActorById)
 
 module.exports = actorRoute

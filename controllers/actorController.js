@@ -150,3 +150,34 @@ exports.updateActorById = async (req, res, next) => {
         next(error)
     }
 }
+
+exports.deleteActorById = async (req, res, next) => {
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid ID format"
+            })
+        }
+    
+        const id = new ObjectId(req.params.id)
+
+        const result = await Actor.deleteOne({ _id: id })
+        if (result.deletedCount === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Actor not found"
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: `Actor with ID ${req.params.id} deleted successfully`,
+            result
+        })
+        
+    
+    } catch (error) {
+        next(error)
+    }
+}

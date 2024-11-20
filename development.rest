@@ -50,3 +50,4 @@ Content-Type: application/json
 }
 
 ###
+DELETE http://localhost:3000/actors/673e22bc1907ab65af95ec30

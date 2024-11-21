@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 require("dotenv").config()
+const cors = require("cors")
 const app = express()
 const port = process.env.PORT
 const mongodbURI = process.env.MONGODB_URI
@@ -19,6 +20,7 @@ connectDB(mongodbURI)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors)
 app.use(router)
 app.use(errorHandling)
 

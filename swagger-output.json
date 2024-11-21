@@ -5,10 +5,9 @@
     "description": "This API allows users to manage the collection of actors in the TV series -- Grey's Anatomy",
     "version": "1.0.0"
   },
-  "host": "https://cse341-project2-h5oa.onrender.com",
+  "host": "cse341-project2-h5oa.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
@@ -159,40 +158,6 @@
     "/actors/search": {
       "post": {
         "description": "Find a particular actor by query of {\"key\": \"value\"}",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "object"
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "gender": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "female"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"

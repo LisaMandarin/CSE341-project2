@@ -5,8 +5,8 @@ const doc = {
         title: "CSE341 Project 2",
         description: "This API allows users to manage the collection of actors in the TV series -- Grey's Anatomy"
     },
-    host: 'https://cse341-project2-h5oa.onrender.com',
-    schemes: ["http", "https"]
+    host: 'cse341-project2-h5oa.onrender.com',
+    schemes: ["https"]
 }
 
 const outputFile = "./swagger-output.json"

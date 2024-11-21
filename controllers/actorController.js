@@ -48,19 +48,6 @@ exports.findById = async (req, res, next) => {
 
 exports.findByQuery = async (req, res, next) => {
     // #swagger.description = 'Find a particular actor by query of {"key": "value"}'
-    /*#swagger.parameters["body"] = {
-        in: "body",
-        required: true,
-        schema: {
-            type: "object",
-            properties: {
-                gender: {
-                    type: "string",
-                    example: "female"
-                }
-            }
-        }
-    }*/
     
     try {
         const query = req.body

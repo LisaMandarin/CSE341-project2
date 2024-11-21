@@ -127,7 +127,7 @@ exports.createActor = async (req, res, next) => {
 }
 
 exports.updateActorById = async (req, res, next) => {
-    // #swagger.description = "Update part of information of a particular actor by ID"
+    // #swagger.description = "Update a particular actor by ID"
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
@@ -135,12 +135,20 @@ exports.updateActorById = async (req, res, next) => {
                 message: "Invalid ID format"
             })
         }
-        const id = new ObjectId(req.params.id)
+        const id = req.params.id
 
-        delete req.body._id  // Sanitize the req.body
+        const { firstName, lastName, gender, character, dateOfBirth, nationality, firstAppearSeason, seasons } = req.body
+        if (!firstName || !lastName || !gender || !character || !firstAppearSeason || !seasons) {
+            return res.status(400).json({
+                success: false,
+                message: "The fields of firstName, lastName, gender, character, firstAppearSeason, seasons are required"
+            })
+        }
 
-        const result = await Actor.updateOne({ _id: id }, req.body)
-        if (result.matchedCount === 0) {
+        const actor = { firstName, lastName, gender, character, dateOfBirth, nationality, firstAppearSeason, seasons }
+
+        const result = await Actor.findByIdAndUpdate(id, actor, {new: true})
+        if (!result) {
             return res.status(404).json({
                 success: false,
                 message: `Actor with ${req.params.id} not found`

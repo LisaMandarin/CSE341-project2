@@ -2,7 +2,7 @@
 GET http://localhost:3000/actors
 
 ###
-GET http://localhost:3000/actors/673e45a6c21e70e4e7988971
+GET http://localhost:3000/actors/673f7636d35d232ed759713c
 
 ###
 POST  http://localhost:3000/actors/search
@@ -42,15 +42,20 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://localhost:3000/actors/673e462c57d9c6b18bfd5854
+PUT  http://localhost:3000/actors/673f7636d35d232ed759713c
 Content-Type: application/json
 
 {
-    "gender": "others"
+    "firstName": "Any",
+    "lastName": "Any",
+    "gender": "female",
+    "character": "Any Character",
+    "firstAppearSeason": 3,
+    "seasons": [3,4,5,6,7,8,17]
 }
 
 ###
-DELETE http://localhost:3000/actors/673e462c57d9c6b18bfd5854
+DELETE http://localhost:3000/actors/673f7636d35d232ed759713c
 
 ###
 DELETE http://localhost:3000/actors

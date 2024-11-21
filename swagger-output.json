@@ -98,8 +98,8 @@
           }
         }
       },
-      "patch": {
-        "description": "Update part of information of a particular actor by ID",
+      "put": {
+        "description": "Update a particular actor by ID",
         "parameters": [
           {
             "name": "id",
@@ -113,7 +113,28 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "character": {
+                  "example": "any"
+                },
+                "dateOfBirth": {
+                  "example": "any"
+                },
+                "nationality": {
+                  "example": "any"
+                },
+                "firstAppearSeason": {
+                  "example": "any"
+                },
+                "seasons": {
                   "example": "any"
                 }
               }
@@ -158,6 +179,21 @@
     "/actors/search": {
       "post": {
         "description": "Find a particular actor by query of {\"key\": \"value\"}",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "gender": {
+                  "example": "female"
+                }
+              }
+            }
+
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

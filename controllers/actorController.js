@@ -58,9 +58,10 @@ exports.findByQuery = async (req, res, next) => {
                     type: "string",
                     example: "female"
                 }
-            },
+            }
         }
     }*/
+    
     try {
         const query = req.body
         if (!query || Object.keys(query).length === 0) {

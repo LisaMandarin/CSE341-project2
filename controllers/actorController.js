@@ -3,6 +3,7 @@ const ObjectId = mongoose.Types.ObjectId
 const Actor = require("../models/actorModel")
 
 exports.findAll = async (req, res, next) => {
+    // #swagger.description = "Retrieve all actors in the actors collection"
     try {
         const result = await Actor.find()
         if (result.length > 0) {
@@ -22,6 +23,7 @@ exports.findAll = async (req, res, next) => {
 }
 
 exports.findById = async (req, res, next) => {
+    // #swagger.description = "Retrieve a particular actor by ID"
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
@@ -45,6 +47,7 @@ exports.findById = async (req, res, next) => {
 }
 
 exports.findByQuery = async (req, res, next) => {
+    // #swagger.description = 'Find a particular actor by query of {"key": "value"}'
     try {
         const query = req.body
         if (!query || Object.keys(query).length === 0) {
@@ -59,7 +62,7 @@ exports.findByQuery = async (req, res, next) => {
             if (key === "seasons") {
                 actorQuery[key] = { $in: query[key]}
             } else if ( key === "character") {
-                actorQuery[key] = { $regex: query[key]}
+                actorQuery[key] = { $regex: query[key], $options: "i"}
             } else {
                 {actorQuery[key] = query[key]}
             }
@@ -82,6 +85,7 @@ exports.findByQuery = async (req, res, next) => {
 }
 
 exports.createActor = async (req, res, next) => {
+    // #swagger.description = "Create a new actor"
     try {
         const {
             firstName,
@@ -90,10 +94,10 @@ exports.createActor = async (req, res, next) => {
             character,
             dateOfBirth,
             nationality,
-            firstAppear,
+            firstAppearSeason,
             seasons
         } = req.body
-        if (!firstName || !lastName || !gender || !character || !firstAppear || !seasons) {
+        if (!firstName || !lastName || !gender || !character || !firstAppearSeason || !seasons) {
             return res.status(400).json({
                 success: false,
                 message: "Invalid parameters: firstName, lastName, gender, character, firstAppear and seasons fields are required"
@@ -107,7 +111,7 @@ exports.createActor = async (req, res, next) => {
             character,
             dateOfBirth,
             nationality,
-            firstAppear,
+            firstAppearSeason,
             seasons
         })
         const result = await newActor.save();
@@ -122,6 +126,7 @@ exports.createActor = async (req, res, next) => {
 }
 
 exports.updateActorById = async (req, res, next) => {
+    // #swagger.description = "Update part of information of a particular actor by ID"
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
@@ -152,6 +157,7 @@ exports.updateActorById = async (req, res, next) => {
 }
 
 exports.deleteActorById = async (req, res, next) => {
+    // #swagger.description = "Delete a particular actor by ID"
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
@@ -162,7 +168,7 @@ exports.deleteActorById = async (req, res, next) => {
     
         const id = new ObjectId(req.params.id)
 
-        const result = await Actor.deleteOne({ _id: id })
+        const result = await Actor.findOneAndDelete({ _id: id })
         if (result.deletedCount === 0) {
             return res.status(404).json({
                 success: false,
@@ -183,6 +189,7 @@ exports.deleteActorById = async (req, res, next) => {
 }
 
 exports.deleteAll = async (req, res, next) => {
+    // #swagger.description = "Delete all actors in the actors collection"
     try {
         const result = await Actor.deleteMany({})
         if (result.deletedCount === 0) {

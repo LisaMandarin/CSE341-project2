@@ -7,7 +7,7 @@ const actorSchema = new Schema({
     character: { type: String, required: true },
     dateOfBirth: { type: Date, required: false },
     nationality: { type: String, required: false },
-    firstAppear: { type: Date, required: true},
+    firstAppearSeason: { type: Number, required: true},
     seasons: [{
         type: Number,
         required: true

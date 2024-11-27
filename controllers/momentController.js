@@ -4,6 +4,7 @@ const Moment = require("../models/momentModel")
 
 exports.findAll = async (req, res, next) => {
     // #swagger.description = "Retrieve all moments in the moment collection"
+    // #swagger.tags = ["moments"]
     try {
         const result = await Moment.find()
         if (result.length > 0) {
@@ -25,6 +26,7 @@ exports.findAll = async (req, res, next) => {
 
 exports.findById = async (req, res, next) => {
     // #swagger.description = "Retrieve a particular moment by ID"
+    // #swagger.tags = ["moments"]
     try {
         const id = req.params.id
         if (!ObjectId.isValid(id)){
@@ -50,7 +52,14 @@ exports.findById = async (req, res, next) => {
 }
 
 exports.findByQuery = async (req, res, next) => {
-    // #swagger.description = 'Find a particular moment by query of {"key": "value"}'
+    // #swagger.description = 'Find a particular moment by query'
+    // #swagger.tags = ["moments"]
+    /* #swagger.parameters["body"] = {
+        in: "body",
+        description: "fieldName : value",
+        required: true,
+        type: "string",
+    } */
     try {
         const query = req.body
         if (!query || Object.keys(query).length === 0) {
@@ -90,6 +99,8 @@ exports.findByQuery = async (req, res, next) => {
 
 exports.createMoment = async (req, res, next) => {
     // #swagger.description = "Create a new moment"
+    // #swagger.tags = ["moments"]
+    // #swagger.security = [{openID: []}]
     try {
         const {
             season,
@@ -130,6 +141,8 @@ exports.createMoment = async (req, res, next) => {
 
 exports.updateMomentById = async (req, res, next) => {
     // #swagger.description = "Update a particular moment by ID"
+    // #swagger.tags = ["moments"]
+    // #swagger.security = [{openID: []}]
     try {
         const id = req.params.id
         if (!ObjectId.isValid(id)) {
@@ -180,6 +193,8 @@ exports.updateMomentById = async (req, res, next) => {
 
 exports.deleteMomentById = async (req, res, next) => {
     // #swagger.description = "Delete a particular moment by ID"
+    // #swagger.tags = ["moments"]
+    // #swagger.security = [{openID: []}]
     try {
         const id = req.params.id
         if (!ObjectId.isValid(id)) {
@@ -209,6 +224,8 @@ exports.deleteMomentById = async (req, res, next) => {
 
 exports.deleteAll = async (req, res, next) => {
     // #swagger.description = "Delete all moments in the moment collection"
+    // #swagger.tags = ["moments"]
+    // #swagger.security = [{openID: []}]
     try {
         const result = await Moment.deleteMany({})
 

@@ -1,18 +1,45 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "title": "CSE341 Project 2",
-    "description": "This API allows users to manage the collection of actors in the TV series -- Grey's Anatomy",
+    "description": "This API allows users to manage the collection of actors and moments in the TV series -- Grey's Anatomy",
     "version": "1.0.0"
   },
-  "host": "cse341-project2-h5oa.onrender.com",
-  "basePath": "/",
-  "schemes": [
-    "https"
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Production site"
+    }
   ],
   "paths": {
+    "/profile": {
+      "get": {
+        "tags": [
+          "profile"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/actors/": {
       "get": {
+        "tags": [
+          "actors"
+        ],
         "description": "Retrieve all actors in the actors collection",
         "responses": {
           "200": {
@@ -21,42 +48,10 @@
         }
       },
       "post": {
-        "description": "Create a new actor",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "gender": {
-                  "example": "any"
-                },
-                "character": {
-                  "example": "any"
-                },
-                "dateOfBirth": {
-                  "example": "any"
-                },
-                "nationality": {
-                  "example": "any"
-                },
-                "firstAppearSeason": {
-                  "example": "any"
-                },
-                "seasons": {
-                  "example": "any"
-                }
-              }
-            }
-          }
+        "tags": [
+          "actors"
         ],
+        "description": "Create a new actor",
         "responses": {
           "201": {
             "description": "Created"
@@ -64,9 +59,52 @@
           "400": {
             "description": "Bad Request"
           }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "example": "any"
+                  },
+                  "lastName": {
+                    "example": "any"
+                  },
+                  "gender": {
+                    "example": "any"
+                  },
+                  "character": {
+                    "example": "any"
+                  },
+                  "dateOfBirth": {
+                    "example": "any"
+                  },
+                  "nationality": {
+                    "example": "any"
+                  },
+                  "firstAppearSeason": {
+                    "example": "any"
+                  },
+                  "seasons": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
+        "tags": [
+          "actors"
+        ],
         "description": "Delete all actors in the actors collection",
         "responses": {
           "200": {
@@ -75,18 +113,28 @@
           "404": {
             "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ]
       }
     },
     "/actors/{id}": {
       "get": {
+        "tags": [
+          "actors"
+        ],
         "description": "Retrieve a particular actor by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -99,45 +147,17 @@
         }
       },
       "put": {
+        "tags": [
+          "actors"
+        ],
         "description": "Update a particular actor by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "gender": {
-                  "example": "any"
-                },
-                "character": {
-                  "example": "any"
-                },
-                "dateOfBirth": {
-                  "example": "any"
-                },
-                "nationality": {
-                  "example": "any"
-                },
-                "firstAppearSeason": {
-                  "example": "any"
-                },
-                "seasons": {
-                  "example": "any"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -151,16 +171,97 @@
           "404": {
             "description": "Not Found"
           }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "example": "any"
+                  },
+                  "lastName": {
+                    "example": "any"
+                  },
+                  "gender": {
+                    "example": "any"
+                  },
+                  "character": {
+                    "example": "any"
+                  },
+                  "dateOfBirth": {
+                    "example": "any"
+                  },
+                  "nationality": {
+                    "example": "any"
+                  },
+                  "firstAppearSeason": {
+                    "example": "any"
+                  },
+                  "seasons": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
+        "tags": [
+          "actors"
+        ],
         "description": "Delete a particular actor by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ]
+      }
+    },
+    "/actors/search": {
+      "post": {
+        "tags": [
+          "actors"
+        ],
+        "description": "Find a particular actor by query",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "fieldName : value",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
           }
         ],
         "responses": {
@@ -176,22 +277,230 @@
         }
       }
     },
-    "/actors/search": {
+    "/moments/": {
+      "get": {
+        "tags": [
+          "moments"
+        ],
+        "description": "Retrieve all moments in the moment collection",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
       "post": {
-        "description": "Find a particular actor by query of {\"key\": \"value\"}",
+        "tags": [
+          "moments"
+        ],
+        "description": "Create a new moment",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "season": {
+                    "example": "any"
+                  },
+                  "episode": {
+                    "example": "any"
+                  },
+                  "title": {
+                    "example": "any"
+                  },
+                  "airDate": {
+                    "example": "any"
+                  },
+                  "plotSummary": {
+                    "example": "any"
+                  },
+                  "youtubeURL": {
+                    "example": "any"
+                  },
+                  "actors": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "moments"
+        ],
+        "description": "Delete all moments in the moment collection",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ]
+      }
+    },
+    "/moments/{id}": {
+      "get": {
+        "tags": [
+          "moments"
+        ],
+        "description": "Retrieve a particular moment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "moments"
+        ],
+        "description": "Update a particular moment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "season": {
+                    "example": "any"
+                  },
+                  "episode": {
+                    "example": "any"
+                  },
+                  "title": {
+                    "example": "any"
+                  },
+                  "airDate": {
+                    "example": "any"
+                  },
+                  "plotSummary": {
+                    "example": "any"
+                  },
+                  "youtubeURL": {
+                    "example": "any"
+                  },
+                  "actors": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "moments"
+        ],
+        "description": "Delete a particular moment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "openID": []
+          }
+        ]
+      }
+    },
+    "/moments/search": {
+      "post": {
+        "tags": [
+          "moments"
+        ],
+        "description": "Find a particular moment by query",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "fieldName : value",
+            "required": true,
             "schema": {
               "type": "object",
-              "properties": {
-                "gender": {
-                  "example": "female"
-                }
-              }
+              "properties": {}
             }
-
           }
         ],
         "responses": {
@@ -207,5 +516,19 @@
         }
       }
     }
-  }
+  },
+  "components": {
+    "securitySchemes": {
+      "openID": {
+        "type": "openIdConnect",
+        "description": "Authenticate using OpenID Connect via Auth0",
+        "openIdConnectUrl": "https://dev-uecjmd1r2nd5b6cq.jp.auth0.com/.well-known/openid-configuration"
+      }
+    }
+  },
+  "security": [
+    {
+      "openID": []
+    }
+  ]
 }

@@ -4,6 +4,7 @@ const Actor = require("../models/actorModel")
 
 exports.findAll = async (req, res, next) => {
     // #swagger.description = "Retrieve all actors in the actors collection"
+    // #swagger.tags = ["actors"]
     try {
         const result = await Actor.find()
         if (result.length > 0) {
@@ -24,6 +25,7 @@ exports.findAll = async (req, res, next) => {
 
 exports.findById = async (req, res, next) => {
     // #swagger.description = "Retrieve a particular actor by ID"
+    // #swagger.tags = ["actors"]
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
@@ -47,7 +49,14 @@ exports.findById = async (req, res, next) => {
 }
 
 exports.findByQuery = async (req, res, next) => {
-    // #swagger.description = 'Find a particular actor by query of {"key": "value"}'
+    // #swagger.description = 'Find a particular actor by query'
+    // #swagger.tags = ["actors"]
+        /* #swagger.parameters["body"] = {
+        in: "body",
+        description: "fieldName : value",
+        required: true,
+        type: "string",
+    } */
     
     try {
         const query = req.body
@@ -87,6 +96,8 @@ exports.findByQuery = async (req, res, next) => {
 
 exports.createActor = async (req, res, next) => {
     // #swagger.description = "Create a new actor"
+    // #swagger.tags = ["actors"]
+    // #swagger.security = [{openID: []}]
     try {
         const {
             firstName,
@@ -128,6 +139,8 @@ exports.createActor = async (req, res, next) => {
 
 exports.updateActorById = async (req, res, next) => {
     // #swagger.description = "Update a particular actor by ID"
+    // #swagger.tags = ["actors"]
+    // #swagger.security = [{openID: []}]
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
@@ -167,6 +180,8 @@ exports.updateActorById = async (req, res, next) => {
 
 exports.deleteActorById = async (req, res, next) => {
     // #swagger.description = "Delete a particular actor by ID"
+    // #swagger.tags = ["actors"]
+    // #swagger.security = [{openID: []}]
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
@@ -199,6 +214,8 @@ exports.deleteActorById = async (req, res, next) => {
 
 exports.deleteAll = async (req, res, next) => {
     // #swagger.description = "Delete all actors in the actors collection"
+    // #swagger.tags = ["actors"]
+    // #swagger.security = [{openID: []}]
     try {
         const result = await Actor.deleteMany({})
         if (result.deletedCount === 0) {

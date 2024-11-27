@@ -25,7 +25,7 @@ const validateMoment = [
         .notEmpty().withMessage("Youtube URL is required")
         .isURL().withMessage("Invalid URL"),
     body("actors")
-        .isArray({min: 1}).withMessage("Actors should be an array")
+        .isArray({min: 1}).withMessage("Actors should be an array with at least one item")
     ]
 
 const validatePartialMoment = [
@@ -54,7 +54,7 @@ const validatePartialMoment = [
         .isURL().withMessage("Invalid URL"),
     body("actors")
         .optional()
-        .isArray({min: 1}).withMessage("Actors should be an array")
+        .isArray({min: 1}).withMessage("Actors should be an array with at least one item")
     ]
 
     const handleValidation = (req, res, next) => {

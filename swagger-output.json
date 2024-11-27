@@ -1,22 +1,18 @@
 {
-  "openapi": "3.0.0",
+  "swagger": "2.0",
   "info": {
     "title": "CSE341 Project 2",
     "description": "This API allows users to manage the collection of actors and moments in the TV series -- Grey's Anatomy",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "http://localhost:3000",
-      "description": "Production site"
-    }
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
   ],
   "paths": {
-    "/profile": {
+    "/": {
       "get": {
-        "tags": [
-          "profile"
-        ],
         "description": "",
         "responses": {
           "200": {
@@ -25,8 +21,11 @@
         }
       }
     },
-    "/": {
+    "/profile": {
       "get": {
+        "tags": [
+          "profile"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -52,6 +51,41 @@
           "actors"
         ],
         "description": "Create a new actor",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "character": {
+                  "example": "any"
+                },
+                "dateOfBirth": {
+                  "example": "any"
+                },
+                "nationality": {
+                  "example": "any"
+                },
+                "firstAppearSeason": {
+                  "example": "any"
+                },
+                "seasons": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -64,42 +98,7 @@
           {
             "openID": []
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "example": "any"
-                  },
-                  "lastName": {
-                    "example": "any"
-                  },
-                  "gender": {
-                    "example": "any"
-                  },
-                  "character": {
-                    "example": "any"
-                  },
-                  "dateOfBirth": {
-                    "example": "any"
-                  },
-                  "nationality": {
-                    "example": "any"
-                  },
-                  "firstAppearSeason": {
-                    "example": "any"
-                  },
-                  "seasons": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
-          }
-        }
+        ]
       },
       "delete": {
         "tags": [
@@ -132,9 +131,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -156,8 +153,39 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
             "schema": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "character": {
+                  "example": "any"
+                },
+                "dateOfBirth": {
+                  "example": "any"
+                },
+                "nationality": {
+                  "example": "any"
+                },
+                "firstAppearSeason": {
+                  "example": "any"
+                },
+                "seasons": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
@@ -176,42 +204,7 @@
           {
             "openID": []
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "example": "any"
-                  },
-                  "lastName": {
-                    "example": "any"
-                  },
-                  "gender": {
-                    "example": "any"
-                  },
-                  "character": {
-                    "example": "any"
-                  },
-                  "dateOfBirth": {
-                    "example": "any"
-                  },
-                  "nationality": {
-                    "example": "any"
-                  },
-                  "firstAppearSeason": {
-                    "example": "any"
-                  },
-                  "seasons": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
-          }
-        }
+        ]
       },
       "delete": {
         "tags": [
@@ -223,9 +216,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -297,6 +288,38 @@
           "moments"
         ],
         "description": "Create a new moment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "season": {
+                  "example": "any"
+                },
+                "episode": {
+                  "example": "any"
+                },
+                "title": {
+                  "example": "any"
+                },
+                "airDate": {
+                  "example": "any"
+                },
+                "plotSummary": {
+                  "example": "any"
+                },
+                "youtubeURL": {
+                  "example": "any"
+                },
+                "actors": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -309,39 +332,7 @@
           {
             "openID": []
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "season": {
-                    "example": "any"
-                  },
-                  "episode": {
-                    "example": "any"
-                  },
-                  "title": {
-                    "example": "any"
-                  },
-                  "airDate": {
-                    "example": "any"
-                  },
-                  "plotSummary": {
-                    "example": "any"
-                  },
-                  "youtubeURL": {
-                    "example": "any"
-                  },
-                  "actors": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
-          }
-        }
+        ]
       },
       "delete": {
         "tags": [
@@ -374,9 +365,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -398,8 +387,36 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
             "schema": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "season": {
+                  "example": "any"
+                },
+                "episode": {
+                  "example": "any"
+                },
+                "title": {
+                  "example": "any"
+                },
+                "airDate": {
+                  "example": "any"
+                },
+                "plotSummary": {
+                  "example": "any"
+                },
+                "youtubeURL": {
+                  "example": "any"
+                },
+                "actors": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
@@ -418,39 +435,7 @@
           {
             "openID": []
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "season": {
-                    "example": "any"
-                  },
-                  "episode": {
-                    "example": "any"
-                  },
-                  "title": {
-                    "example": "any"
-                  },
-                  "airDate": {
-                    "example": "any"
-                  },
-                  "plotSummary": {
-                    "example": "any"
-                  },
-                  "youtubeURL": {
-                    "example": "any"
-                  },
-                  "actors": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
-          }
-        }
+        ]
       },
       "delete": {
         "tags": [
@@ -462,9 +447,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -516,19 +499,5 @@
         }
       }
     }
-  },
-  "components": {
-    "securitySchemes": {
-      "openID": {
-        "type": "openIdConnect",
-        "description": "Authenticate using OpenID Connect via Auth0",
-        "openIdConnectUrl": "https://dev-uecjmd1r2nd5b6cq.jp.auth0.com/.well-known/openid-configuration"
-      }
-    }
-  },
-  "security": [
-    {
-      "openID": []
-    }
-  ]
+  }
 }

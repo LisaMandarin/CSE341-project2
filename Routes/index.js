@@ -4,10 +4,6 @@ const momentRoute = require("./momentRoute")
 const swaggerRoute = require("./swaggerRoute")
 const { requiresAuth } = require("express-openid-connect")
 
-router.get("/profile", requiresAuth(), (req, res) => {
-    // #swagger.tags = ["profile"]
-    res.json(req.oidc.user)
-})
 router.use("/api-docs", swaggerRoute)
 router.use("/actors", actorRoute)
 router.use("/moments", momentRoute)
@@ -25,6 +21,11 @@ router.get("/", (req, res) => {
             apiDocs: docLink
         })
     }
+})
+
+router.get("/profile", requiresAuth(), (req, res) => {
+    // #swagger.tags = ["profile"]
+    res.json(req.oidc.user)
 })
 
 module.exports = router

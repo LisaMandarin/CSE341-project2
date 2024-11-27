@@ -4,9 +4,9 @@ const momentRoute = require("./momentRoute")
 const swaggerRoute = require("./swaggerRoute")
 const { requiresAuth } = require("express-openid-connect")
 
-router.use("/api-docs", swaggerRoute)
 router.use("/actors", actorRoute)
 router.use("/moments", momentRoute)
+router.use("/api-docs", swaggerRoute)
 
 router.get("/", (req, res) => {
     const docLink = 'https://cse341-project2-h5oa.onrender.com/api-docs'

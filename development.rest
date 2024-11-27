@@ -82,7 +82,7 @@ POST {{baseUrl}}/moments/search
 Content-Type: application/json
 
 {
-  "season": 8
+  "airDate": "2005-03-27"
 }
 
 

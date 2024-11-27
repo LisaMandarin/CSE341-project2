@@ -6,7 +6,7 @@ const doc = {
         title: "CSE341 Project 2",
         description: "This API allows users to manage the collection of actors and moments in the TV series -- Grey's Anatomy"
     },
-    host: "https://cse341-project2-h5oa.onrender.com",
+    host: "cse341-project2-h5oa.onrender.com",
     schemes: ["https:"]
 }
 

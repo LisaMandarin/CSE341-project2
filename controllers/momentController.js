@@ -70,7 +70,6 @@ exports.findByQuery = async (req, res, next) => {
             }
         }
 
-        console.log("Generated Query:", momentQuery)
         const result = await Moment.find(momentQuery) 
         
         if (!result || result.length === 0){

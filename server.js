@@ -33,7 +33,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(auth(config))
-app.use(router)
+app.use("/", router)
 app.use(errorHandling)
 
 app.listen(port, () => console.log(`Server application listening on port ${port}`))

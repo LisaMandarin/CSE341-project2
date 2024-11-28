@@ -7,7 +7,9 @@ const doc = {
         description: "This API allows users to manage the collection of actors and moments in the TV series -- Grey's Anatomy"
     },
     host: "cse341-project2-h5oa.onrender.com",
-    schemes: ["https:"]
+    schemes: ["https:"],
+    produces: ["application/json"],
+    consumes: ["application/json"]
 }
 
 const outputFile = "./swagger-output.json"

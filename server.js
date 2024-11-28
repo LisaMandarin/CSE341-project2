@@ -34,6 +34,12 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(auth(config))
 app.use("/", router)
+app.use((req, res) => {
+    res.status(404).json({
+        success: false,
+        message: "Route not found"
+    })
+})
 app.use(errorHandling)
 
 app.listen(port, () => console.log(`Server application listening on port ${port}`))

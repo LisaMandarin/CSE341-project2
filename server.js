@@ -19,7 +19,6 @@ const config = {
     issuerBaseURL: process.env.ISSUER_BASE_URL
 }
 
-app.use(auth(config))
 
 if (!port) {
     throw new Error("Port is not defined in the env file")
@@ -33,6 +32,7 @@ connectDB(mongodbURI)
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(auth(config))
 app.use(router)
 app.use(errorHandling)
 
